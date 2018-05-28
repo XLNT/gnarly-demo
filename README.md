@@ -4,7 +4,7 @@
 
 It uses the `:demo` tags of `shrugs/gnarly-test` and `shrugs/paperboy`, which may eventually be out of date.
 
-## Setup
+## Run the Demo
 
 This demo relies on `docker-compose`. If you don't have it already, [install docker](https://docs.docker.com/install/) and then install [docker-compose](https://docs.docker.com/compose/install/). Install instructions vary between machines, so [check the website](https://docs.docker.com/install/) for up-to-date docs.
 
