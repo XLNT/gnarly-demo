@@ -8,7 +8,7 @@ services:
       - postgres
     image: 'shrugs/gnarly-test:demo'
     environment:
-      DEBUG: '*,-sequelize*,-gnarly-core:store:*,-gnarly-core:api,-gnarly-core:blockstream:fast-forward'
+      DEBUG: '*,-sequelize*,-gnarly-core:store:*,-gnarly-core:api,-gnarly-core:blockstream:fast-forward,-gnarly-core:ourbit:notifyPatches'
       NODE_ENDPOINT: 'https://mainnet.infura.io'
       CONNECTION_STRING: 'postgres://postgres@postgres:5432/postgres'
       GNARLY_RESET: 'true'
@@ -22,3 +22,11 @@ services:
       PORT: '3000'
     ports:
       - '3000:3000'
+  an-old-man-at-a-cafe-in-the-50s:
+    depends_on:
+      - paperboy
+    image: 'shrugs/an-old-man-at-a-cafe-in-the-50s:demo'
+    environment:
+      DEBUG: '*'
+      WS_ENDPOINT: 'ws://paperboy:3000'
+    command: ['{ "path": "/filter", "args": { "addresses": [ "0x06012c8cf97bead5deae237070f9587f8e7a266d" ], "eventName": "Transfer", "confirmations": 1 }}']
