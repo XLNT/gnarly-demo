@@ -14,7 +14,7 @@ _Note: unfortunately, gnarly and paperboy don't attempt reconnects on failure ju
 2. `docker-compose up -d gnarly`
 3. in a separate window `docker-compose logs -f gnarly`
 4. `docker-compose up -d paperboy`
-5. `docker-compose up an-old-man-at-a-cafe-in-the-50s` (named because that's what comes to mind when I think of people reading the newspaper)
+5. `docker-compose up wsecho` (named because that's what comes to mind when I think of people reading the newspaper)
 6. Wait a few blocks to see some CryptoKitty `Transfer` events come in.
 
 If you want it as a terrible one-liner:
@@ -26,7 +26,7 @@ docker-compose up -d postgres && \
     sleep 45 && \
     docker-compose up -d paperboy && \
     sleep 2 && \
-    docker-compose up an-old-man-at-a-cafe-in-the-50s
+    docker-compose up wsecho
 ```
 
 You can watch the logs of gnarly with `docker-compose logs -f gnarly`
@@ -38,7 +38,7 @@ docker-compose down
 docker rmi postgres:latest
 docker rmi shrugs/gnarly-test:demo
 docker rmi shrugs/paperboy:demo
-docker rmi shrugs/an-old-man-at-a-cafe-in-the-50s:demo
+docker rmi shrugs/wsecho:demo
 ```
 
 ## Description
@@ -49,6 +49,6 @@ Gnarly is configured with the erc721, blocks, and events reducers and is in char
 
 Paperboy is just a websocket server that queries against the postgres `events` table for events that match the filter options you provide.
 
-And `an-old-man-at-a-cafe-in-the-50s` is the image that reads the events that the paperboy delivers. It's just a dumb websocket client packaged as a docker container, nothing special.
+And `wsecho` is the image that reads the events that the paperboy delivers. It's just a dumb websocket client packaged as a docker container, nothing special.
 
 Note that this docker-compose file exposes paperboy's port (`3000`) to your host, so you can query it yourself, following the details in the [paperboy repo](https://github.com/XLNT/paperboy)

@@ -22,10 +22,10 @@ services:
       PORT: '3000'
     ports:
       - '3000:3000'
-  an-old-man-at-a-cafe-in-the-50s:
+  wsecho:
     depends_on:
       - paperboy
-    image: 'shrugs/an-old-man-at-a-cafe-in-the-50s:demo'
+    image: 'shrugs/wsecho:demo'
     environment:
       DEBUG: '*'
       WS_ENDPOINT: 'ws://paperboy:3000'
